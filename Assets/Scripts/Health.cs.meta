@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 713c51101fea30c47a0cb12f42c10e37
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ActiveBar: {instanceID: 0}
+  - BackBar: {instanceID: 0}
+  - healthtext: {instanceID: 0}
+  - gameover: {fileID: 8300000, guid: 3aff2c305ffee7849adae56fd044dc30, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
