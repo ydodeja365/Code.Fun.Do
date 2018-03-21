@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-F:/ST(AR) Wars.apk
+F:/APK
 SceneListBegin?
 Assets/Scenes/GameMenu.unity
 Assets/Scenes/Game.unity
@@ -385,3 +385,4 @@ a924c90a95cf65003f662aa5e30abb6b Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Music
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AndroidBack
