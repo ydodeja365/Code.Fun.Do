@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
+    private const string MethodName = "playMusic";
     public static float speed=0.3f;//Setting speed of movement
     public AudioClip[] audios;
+    private bool wasShot;
+    private bool collided;
+    ParticleSystem p;
     // Use this for initialization
     void Start()
     {
+        wasShot = false;
+        collided = false;
         speed = 0.3f + 0.15f * (Game.currentlevel - 1);
+        p  = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -23,27 +30,23 @@ public class Enemy : MonoBehaviour {
    
         if(other.CompareTag("Player"))
         {
+            collided = true;
             //Debug.Log("Has collided!");
             //Decrease player's health and destroy the spaceship
             FindObjectOfType<Health>().TakeDamage();
-            endTrigger();
-            GetComponent<AudioSource>().clip=audios[0];
-            GetComponent<AudioSource>().Play();
-            //Debug.Log("Played Audio!");
-            Destroy(this.gameObject,audios[0].length);
+            p.Play();
+            Invoke(MethodName,p.main.duration-0.5f);
         }
         if(other.CompareTag("bullet"))
         {
+            wasShot = true;
             //Debug.Log("Shot!");
             Destroy(other.gameObject);
             //Increase player's score and destroy the spaceship
             Game.score += (int)((Game.currentlevel+5) * speed * 20);
-            endTrigger();
-            GetComponent<AudioSource>().clip = audios[1];
-            GetComponent<AudioSource>().Play();
-            //Debug.Log("Played Audio!");
-            Destroy(this.gameObject, audios[1].length);
-            Destroy(this.gameObject);
+
+            p.Play();
+            Invoke(MethodName,p.main.duration-0.5f);
         }
     
     }
@@ -51,6 +54,19 @@ public class Enemy : MonoBehaviour {
     {
         Game.spaceshipsHit -= 1;
         if (Game.spaceshipsHit>=Game.spawnCount)
-            FindObjectOfType<Game>().SpawnNewRobo();
+            FindObjectOfType<Game>().SpawnNew();
+    }
+    void playMusic()
+    {
+        int i;
+        if (wasShot)
+            i = 1;
+        else
+            i = 0;
+        GetComponent<AudioSource>().clip = audios[i];
+        GetComponent<AudioSource>().Play();
+        //Debug.Log("Played Audio!");
+        endTrigger();
+        Destroy(this.gameObject, audios[i].length);
     }
 }

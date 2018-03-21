@@ -28,7 +28,7 @@ public class Game : MonoBehaviour {
         {
             started = true;
             for (int i = 0; i < spawnCount; i++)
-                SpawnNewRobo();
+                SpawnNew();
         }
         if(spaceshipsHit==0&&Health.health!=100)
         {
@@ -37,7 +37,7 @@ public class Game : MonoBehaviour {
             SceneManager.LoadScene("Level Up");
         }
 	}
-    public void SpawnNewRobo()
+    public void SpawnNew()
     {
         GameObject spaceship = spaceships[Random.Range(0, 2)];
         signx = Random.Range(0,2);
